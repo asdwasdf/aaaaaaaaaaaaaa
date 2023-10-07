@@ -381,6 +381,15 @@ Router.get("/register", async (req: Request, res: Response) => {
   const error = "";
   res.render("register", { error });
 });
+Router.get("/contribute", async (req: Request, res: Response) => {
+  if (req.session.loggedIn) {
+    const role = req.session.user.role;
+    const nameUser = req.session.user.username;
+    res.render("contribute", { role, nameUser });
+  } else {
+    res.redirect("/login");
+  }
+});
 Router.post("/", async (req: Request, res: Response) => {
   try {
     if (req.session.loggedIn) {
@@ -638,3 +647,8 @@ Router.get("/comment", async (req: Request, res: Response) => {
     res.status(500).send(e.message);
   }
 });
+
+// Router.get("/register", async (req: Request, res: Response) => {
+//   const error = "";
+//   res.render("register", { error });
+// });
