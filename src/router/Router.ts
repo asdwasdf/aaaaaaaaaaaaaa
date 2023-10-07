@@ -390,6 +390,29 @@ Router.get("/contribute", async (req: Request, res: Response) => {
     res.redirect("/login");
   }
 });
+Router.get("/payment", async (req: Request, res: Response) => {
+  if (req.session.loggedIn) {
+    const role = req.session.user.role;
+    const nameUser = req.session.user.username;
+    res.render("payment", { role, nameUser });
+  } else {
+    res.redirect("/login");
+  }
+});
+Router.get("/comment", async (req: Request, res: Response) => {
+  try {
+    if (req.session.loggedIn) {
+      const role = req.session.user.role;
+      const nameUser = req.session.user.username;
+      const comment = await commentRepository.find();
+      res.render("Comment", { role, nameUser });
+    } else {
+      res.redirect("/login");
+    }
+  } catch (e: any) {
+    res.status(500).send(e.message);
+  }
+});
 Router.post("/", async (req: Request, res: Response) => {
   try {
     if (req.session.loggedIn) {
@@ -635,14 +658,6 @@ Router.post("/DeleteUser/(:id)", async (req: Request, res: Response) => {
     await userRepository.remove(userRemove);
 
     res.redirect("/user");
-  } catch (e: any) {
-    res.status(500).send(e.message);
-  }
-});
-Router.get("/comment", async (req: Request, res: Response) => {
-  try {
-    const comment = await commentRepository.find();
-    res.render("/Comment", { comment });
   } catch (e: any) {
     res.status(500).send(e.message);
   }

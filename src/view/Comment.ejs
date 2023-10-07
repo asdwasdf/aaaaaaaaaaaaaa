@@ -8,7 +8,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
-
     <link
       href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
       rel="stylesheet"
@@ -17,7 +16,78 @@
 
     <link rel="stylesheet" href="/css/style.css" />
     <!-- <script type="module" defer src="/js/controller.js"></script> -->
+    <style>
+      /* CSS cho phần container của bình luận */
+      .comment-container {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+      }
 
+      /* CSS cho hình đại diện của người dùng */
+      .user-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        float: left;
+        margin-right: 10px;
+      }
+
+      /* CSS cho phần nội dung bình luận */
+      .comment-content {
+        font-size: 14px;
+      }
+
+      /* Xóa định dạng mặc định của danh sách (list) */
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      /* CSS cho liên kết trả lời */
+      .reply-link {
+        color: #007bff;
+        text-decoration: none;
+        margin-left: 10px;
+      }
+
+      /* Xóa định dạng liên kết khi hover */
+      .reply-link:hover {
+        text-decoration: underline;
+      }
+      .comment-form {
+        width: 400px;
+        margin: 20px;
+      }
+
+      .comment-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .comment-button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      .comments {
+        width: 400px;
+        margin: 20px;
+      }
+
+      /* CSS cho hiển thị bình luận */
+      .comment {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+    </style>
     <title>forkify // Search over 1,000,000 recipes</title>
   </head>
   <body>
@@ -55,39 +125,7 @@
               </button>
               <% }%>
             </li>
-            <li class="nav__item">
-              <button class="nav__btn nav__btn--bookmarks">
-                <svg class="nav__icon">
-                  <use href="/img/icons.svg#icon-bookmark"></use>
-                </svg>
-                <span>Bookmarks</span>
-              </button>
-              <div class="bookmarks">
-                <ul class="bookmarks__list">
-                  <li class="preview">
-                    <a class="preview__link" href="#5ed6604591c37cdc054bcd43">
-                      <figure class="preview__fig">
-                        <img
-                          src="http://forkify-api.herokuapp.com/images/eggsaladsandwich9908.jpg"
-                          alt="Egg Salad Sandwich (the only one I"
-                        />
-                      </figure>
-                      <div class="preview__data">
-                        <h4 class="preview__title">
-                          Egg Salad Sandwich (the only one I
-                        </h4>
-                        <p class="preview__publisher">101 Cookbooks</p>
-                        <div class="preview__user-generated hidden">
-                          <svg>
-                            <use href=""></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+
             <li class="nav__item">
               <button class="nav__btn nav__btn--bookmarks">
                 <svg class="nav__icon">
@@ -98,6 +136,7 @@
               <div class="bookmarks" style="width: 18rem">
                 <ul class="bookmarks__list">
                   <% if(role ==="admin"){%>
+
                   <li class="preview box-">
                     <a href="/user" class="preview__link box-user-item">
                       <p>Danh sách tài khoản</p>
@@ -129,6 +168,130 @@
           </ul>
         </nav>
       </header>
+
+      <div class="">
+        <div class="comment-container">
+          <div class="comment">
+            <img src="avatar.jpg" alt="User Avatar" class="avatar" />
+            <div class="comment-content">
+              <h3 class="username">John Doe</h3>
+              <p class="comment-text">
+                This is a sample comment. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+              </p>
+              <p class="email">
+                Email: <a href="mailto:john@example.com">john@example.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <form action="" class="comment-form">
+          <h2>Bình Luận</h2>
+          <input
+            type="text"
+            id="name"
+            class="comment-input"
+            placeholder="Họ và Tên"
+          />
+          <input
+            type="email"
+            id="email"
+            class="comment-input"
+            placeholder="Email"
+          />
+          <textarea
+            id="comment"
+            class="comment-input"
+            placeholder="Nhập bình luận của bạn"
+          ></textarea>
+          <button class="comment-button">Gửi Bình Luận</button>
+        </form>
+      </div>
+      <footer
+        id="footer-section"
+        class="penci-footer-social-media penci-lazy footer-social-remove-circle"
+      >
+        <div class="container-footer">
+          <div class="footer-socials-section">
+            <ul class="footer-socials">
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="bi"></i><span>Facebook</span></a
+                >
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fa fa-twitter"></i><span>Twitter</span></a
+                >
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fa fa-google-plus"></i><span>Google +</span></a
+                >
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fa fa-instagram"></i><span>Instagram</span></a
+                >
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fa fa-pinterest"></i><span>Pinterest</span></a
+                >
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fa fa-tumblr"></i><span>Tumblr</span></a
+                >
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fa fa-youtube-play"></i><span>Youtube</span></a
+                >
+              </li>
+              <li>
+                <a href="mailto:phanngocanh11@gmail.com"
+                  ><i class="fa fa-envelope-o"></i><span>Email</span></a
+                >
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  ><i class="fa fa-snapchat-ghost"></i><span>Snapchat</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-logo-copyright footer-not-logo footer-not-gotop">
+            <div class="footer-menu-wrap">
+              <ul id="menu-footer-menu" class="footer-menu">
+                <li
+                  id="menu-item-1175"
+                  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1175"
+                >
+                  <a href="https://www.esheepkitchen.com/home/">Home</a>
+                </li>
+                <li
+                  id="menu-item-1174"
+                  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1174"
+                >
+                  <a href="https://www.esheepkitchen.com/about-me/">About me</a>
+                </li>
+                <li
+                  id="menu-item-1176"
+                  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1176"
+                >
+                  <a href="https://www.esheepkitchen.com/cookbooks/"
+                    >Cookbooks</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="penci-go-to-top-floating show-up">
+            <i class="fa fa-angle-up"></i>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
   <script src="js/index.js"></script>
